@@ -1,0 +1,17 @@
+.container{
+    background-image: url("https://www.mostazaweb.com.ar/wp-content/uploads/2025/04/00_-PRUEBAS-ARGENTINA-2025_13-1.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+.btnHamburger{
+    background-color: transparent !important;
+    padding: 10px !important;
+    border: 2px solid rgb(48, 52, 54) !important;
+    border-radius: 50% !important;
+}
+
+.btnHamburger:hover{
+    background-color: rgb(150, 26, 38) !important;
+}
