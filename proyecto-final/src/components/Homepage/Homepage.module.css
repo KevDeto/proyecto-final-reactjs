@@ -8,10 +8,93 @@
 .btnHamburger{
     background-color: transparent !important;
     padding: 10px !important;
-    border: 2px solid rgb(48, 52, 54) !important;
+    border: 3px solid white !important;
     border-radius: 50% !important;
 }
 
 .btnHamburger:hover{
     background-color: rgb(150, 26, 38) !important;
+}
+
+.btnTextAlignJustify{
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 20px;
+    padding: 12px 24px !important;
+    background-color: rgb(227, 31, 43) !important;
+    border: none !important;
+    line-height: 1 !important;
+}
+
+.btnTextAlignJustify:hover{
+    background-color: rgb(113, 22, 30) !important;
+}
+
+.logo{
+    margin-right: 20px;
+    width: 90px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.offcanvas{
+    background-color: rgb(188, 33, 48) !important;
+    color: white !important;
+}
+
+.offcanvasHeader{
+    display: flex;
+    justify-content: space-between;
+}
+
+.offcanvasTitle{
+    line-height: 1 !important;
+    font-size: 30px !important;
+}
+
+.btnClose{
+    background-color: transparent !important;
+    color: white !important;
+    padding: 10px !important;
+    border: 2px solid white !important;
+    border-radius: 50% !important;
+    line-height: 1 !important;
+}
+
+.btnClose:hover{
+    background-color: rgb(113, 22, 30) !important;
+}
+
+.offcanvasBody {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: start;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 0 !important;
+}
+
+.nav1 a{
+    color: white !important;
+    font-size: 19px;
+    padding: 13px 20px;
+}
+
+.nav1 a:hover{
+    background-color: rgb(250, 0, 25);
+    transition: background-color 0.3s ease, padding-left 0.4s ease !important;
+    color: white !important;
+    padding-left: 30px;
+}
+
+.nav2 a{
+    color: white !important;
+}
+
+.nav2 a:hover{
+    transition: none 0.3s ease;
+    transform: scale(0.9);
 }
