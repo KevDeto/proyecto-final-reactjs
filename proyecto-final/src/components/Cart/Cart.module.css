@@ -1,0 +1,78 @@
+.container{
+    background-color: rgb(27, 27, 31) !important;
+    min-height: 100vh;
+    color: white;
+}
+
+.row{
+    padding-top: 80px !important;
+    justify-content: center;
+}
+
+.colOne{
+    width: 100% !important;
+    max-width: 900px !important;
+}
+
+.rowData{
+    border-radius: 12px;
+}
+
+.rowData:hover{
+    box-shadow: 0px 0px 20px 1px rgba(227, 31, 44, 0.336);
+    transition: all 0.3s ease;
+}
+
+.dataColumn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.colTwo{
+    min-width: 320px !important;
+    max-width: 900px !important;
+}
+
+.colTwoCard{
+    width: 95% !important;
+    background-color: rgb(27, 27, 31) !important;
+    color: white !important;
+    position: sticky !important;
+    top: 0px !important;
+    border-radius: 12px !important;
+}
+
+.colTwoCard:hover{
+    transition: border 0.6s ease;
+    box-shadow: 0px 0px 20px 1px rgba(227, 31, 44, 0.336);
+}
+
+.button{
+    border: none !important;
+    background-color: rgb(227, 31, 43) !important;    
+}
+
+.card{
+    background-color: rgb(27, 27, 31) !important;
+    color: white !important;
+    text-align: center;
+}
+
+@media (max-width: 1200px) {
+    .colTwoCard {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 50% !important;
+        top: auto !important;
+        z-index: 1050 !important;
+        max-width: 900px !important;
+        transform: translateX(-50%) !important;
+        margin-top: 20px;
+    }
+    
+    .container {
+        padding-bottom: 200px !important;
+    }
+}
+

@@ -1,0 +1,38 @@
+.container{
+    background-color: rgb(27, 27, 31);
+    flex-direction: column;
+    padding-top: 48px;
+}
+
+.lupa{
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    color: #999;
+    pointer-events: none;
+}
+
+.searchBar{
+    display: inline-block;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.171);    
+    width: 90vw;
+    max-width: 1000px;
+    height: 48px;
+    border: 2px solid transparent;
+    color: white;
+    padding: 12px 22px 12px 52px  ;
+    position: relative;
+    border-radius: 8px;
+}
+
+.searchBar:hover{
+    border: 2px solid rgb(227, 31, 43);
+    transition: border 0.3s ease;
+}
+
+.searchBar:focus{
+    outline: none !important;
+}
