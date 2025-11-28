@@ -1,0 +1,43 @@
+.container{
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background-color: rgb(27, 27, 31) !important;
+    min-width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
+}
+
+.card{
+    color: white !important;
+    background-color: rgb(27, 27, 31) !important;
+    border: 2px solid rgb(227, 31, 44) !important;
+    width: 100% !important;
+    max-width: 400px !important;
+}
+
+.button{
+    border: none !important;
+    background-color: rgb(227, 31, 44) !important;
+}
+
+.formControl{
+    background-color: rgba(0, 0, 0, 0.171) !important;
+    border: 2px solid rgb(227, 31, 44) !important;
+    color: white !important;
+}
+
+.formControl::placeholder{
+    color: rgba(255, 255, 255, 0.342) !important;
+    opacity: 1 !important;
+}
+
+.formControl:focus{
+    box-shadow: none !important;
+}
+
+.info{
+    background-color: rgb(113, 22, 30) !important;
+    border: none !important;
+    color: white !important;
+}

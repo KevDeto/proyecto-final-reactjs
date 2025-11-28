@@ -1,7 +1,7 @@
 import React, { useState} from 'react';
 import { Container, Row, Col, Card, Button, CardText } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import { useCart } from '../../hooks/useCart'; // Ajusta la ruta según tu estructura
+import { useCart } from '../../hooks/useCart';
 import { TextAlignJustify } from 'lucide-react';
 import Logo from "../../assets/logo-mostaza.png"
 import Sidebar from "../Sidebar/Sidebar.jsx";
@@ -9,7 +9,7 @@ import styles from "./Cart.module.css"
 import stylesHome from "../Homepage/Homepage.module.css";
 
 function Cart() {
-    const { cartItems, removeFromCart, getCartTotal, getCartItemsCount, getCountSameItems } = useCart();
+    const { cartItems, removeFromCart, getCartTotal, getCartItemsCount, getCountSameItems, clearCart} = useCart();
         
     const [showOffcanvas, setShowOffcanvas] = useState(false);
     
@@ -28,7 +28,7 @@ function Cart() {
             <Sidebar showOffcanvas={showOffcanvas} handleClose={handleClose}/>
         </div>
         <Row className={`${styles.row}`} lg={12} xl={6}>
-            <Col className={`${styles.colOne}`} xs={12} lg={8} xl={9}>
+            <Col className={`${styles.colOne} mb-2`} xs={12} lg={8} xl={9}>
                 {cartItems.length === 0 ? (
                 <Card className={`${styles.card}`}>
                     <Card.Body>
@@ -74,7 +74,7 @@ function Cart() {
                         <span>{getCartTotal().toFixed(2)}</span>
                     </div>
                     <Card.Footer>
-                        <Button className={`${styles.button} w-100`} disabled={cartItems.length === 0}>
+                        <Button className={`${styles.button} w-100`} disabled={cartItems.length === 0} onClick={()=> clearCart()}>
                             Confirmar Comprar
                         </Button>
                     </Card.Footer>
