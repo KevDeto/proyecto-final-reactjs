@@ -1,11 +1,23 @@
 import React, { useState} from "react";
 import { Card, Container, Form, Button, Alert, Spinner } from "react-bootstrap";
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, NavLink } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import { TextAlignJustify } from "lucide-react";
 import styles from "./Login.module.css"
+import stylesHome from "../Homepage/Homepage.module.css";
+import Logo from "../../assets/logo-mostaza.png"
+import Sidebar from "../Sidebar/Sidebar.jsx";
 
 
 const Login = () => {
+    const [searchTerm, setSearchTerm] = useState('');
+
+    const [showOffcanvas, setShowOffcanvas] = useState(false);
+
+    const handleOpen = () => setShowOffcanvas(true);
+    const handleClose = () => setShowOffcanvas(false);
+
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [formErrors, setFormErrors] = useState({});
@@ -52,6 +64,15 @@ const Login = () => {
 
     return (
         <Container className={`${styles.container}`}>
+            <div>
+                <Button className={`${stylesHome.btnTextAlignJustify} rounded-5`} onClick={handleOpen} >
+                    <TextAlignJustify size={20} strokeWidth={4}/>
+                </Button>
+                <NavLink to="/">
+                    <img src={Logo} alt="Mostaza" className={`${stylesHome.logo}`}/>
+                </NavLink>
+                <Sidebar showOffcanvas={showOffcanvas} handleClose={handleClose}/>
+            </div>
             <Card className={`${styles.card}`}>
                 <Card.Body className="p-4">
                     <Card.Title as="h2" className="text-center mb-4">

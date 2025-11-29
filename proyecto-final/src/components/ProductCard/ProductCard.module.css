@@ -10,7 +10,6 @@
     font-family: 'Mulish';    
     display: flex !important;
     flex-direction: column !important;
-    height: 100%;
 }
 
 .cardText{

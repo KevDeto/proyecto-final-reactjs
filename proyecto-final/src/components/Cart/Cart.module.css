@@ -16,7 +16,7 @@
 
 .rowData{
     border-radius: 12px;
-    border: transparent;
+    border: 1px solid transparent;
 }
 
 .rowData:hover{

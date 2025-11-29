@@ -2,6 +2,7 @@
     background-color: rgb(27, 27, 31);
     flex-direction: column;
     padding-top: 48px;
+    min-height: 100vh !important;
 }
 
 .lupa{

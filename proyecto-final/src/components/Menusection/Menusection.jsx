@@ -2,6 +2,7 @@ import React, { useState} from "react";
 import { Container, Row, Col, Navbar, Nav, Button, Offcanvas } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { Search, TextAlignJustify } from "lucide-react";
+import { useMenu } from "../../hooks/useMenu.jsx";
 import Sidebar from "../Sidebar/Sidebar.jsx";
 import styles from "./Menusection.module.css";
 import stylesHome from "../Homepage/Homepage.module.css";
@@ -9,12 +10,21 @@ import Logo from "../../assets/logo-mostaza.png"
 import ProductCard from "../ProductCard/ProductCard.jsx";
 
 function Menusection() {
-    const [searchTerm, setSearchTerm] = useState('');
+    const { searchProducts, clearSearch, searchTerm } = useMenu();    
 
     const [showOffcanvas, setShowOffcanvas] = useState(false);
 
     const handleOpen = () => setShowOffcanvas(true);
     const handleClose = () => setShowOffcanvas(false);
+
+        const handleSearchChange = (e) => {
+        const value = e.target.value;
+        searchProducts(value); // ← Llamar a la función del contexto
+    };
+
+    const handleClearSearch = () => {
+        clearSearch(); // ← Limpiar la búsqueda
+    };
 
     return(
         <div className={`d-flex align-items-center ${styles.container}`}>
@@ -27,7 +37,7 @@ function Menusection() {
                     type="text" 
                     placeholder="Buscar hamburguesas, helados, ensaladas..." 
                     value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
+                    onChange={handleSearchChange}
                 />
             </div>
             <NavLink to="/">

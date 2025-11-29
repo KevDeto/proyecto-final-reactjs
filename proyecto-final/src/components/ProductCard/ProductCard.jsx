@@ -5,7 +5,7 @@ import { useCart } from "../../hooks/useCart"
 import styles from "./ProductCard.module.css"
 
 function ProductCard(){
-  const { menu, loading, error } = useMenu();
+  const { filteredMenu, loading, error } = useMenu();
   const { addToCart } = useCart();
 
   const handleAddToCart = (product) => {
@@ -14,10 +14,34 @@ function ProductCard(){
     console.log('🛒 Producto agregado:', product.name);
   };
 
+    if (loading) {
+    return (
+      <Container fluid>
+        <div className="text-center text-white py-4">Cargando productos...</div>
+      </Container>
+    );
+  }
+
+  if (error) {
+    return (
+      <Container fluid>
+        <div className="text-center text-white py-4">Error: {error}</div>
+      </Container>
+    );
+  }
+
   return(
     <Container fluid>
       <Row className="g-3">
-        {menu.map((product) => (
+                {filteredMenu.length === 0 ? (
+          <Col xs={12}>
+            <div className="text-center text-white py-5">
+              <h5>No se encontraron productos</h5>
+              <p>Intenta con otros términos de búsqueda</p>
+            </div>
+          </Col>
+        ) : (
+        filteredMenu.map((product) => (
           <Col xs={12} sm={6} md={6} lg={4} xl={4} xxl={3} key={product.id}>
             <Card className={`${styles.card} h-100`} onClick={() => handleAddToCart(product)}>
               <Card.Img src={product.image} className="cursor-pointer"/>
@@ -37,7 +61,8 @@ function ProductCard(){
               </Card.Body>
             </Card>
           </Col>
-        ))}
+        ))
+      )}
       </Row>
     </Container>
     );
