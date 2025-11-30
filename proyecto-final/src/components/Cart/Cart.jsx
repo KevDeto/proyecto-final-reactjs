@@ -3,10 +3,12 @@ import { Container, Row, Col, Card, Button, CardText } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import { useCart } from '../../hooks/useCart';
 import { TextAlignJustify } from 'lucide-react';
-import Logo from "../../assets/logo-mostaza.png"
+import { toast } from 'react-toastify';
+import { Helmet } from 'react-helmet';
 import Sidebar from "../Sidebar/Sidebar.jsx";
 import styles from "./Cart.module.css"
 import stylesHome from "../Homepage/Homepage.module.css";
+import Logo from "../../assets/logo-mostaza.png"
 
 function Cart() {
     const { cartItems, removeFromCart, getCartTotal, getCartItemsCount, getCountSameItems, clearCart} = useCart();
@@ -16,8 +18,31 @@ function Cart() {
     const handleOpen = () => setShowOffcanvas(true);
     const handleClose = () => setShowOffcanvas(false);
 
+    const handleConfirmPurchase = () => {
+        if (cartItems.length === 0) return;
+        
+        // Mostrar notificación de éxito
+        toast.success(`🎉 ¡Compra realizada! Gracias por tu pedido`, {
+            position: "top-right",
+            autoClose: 4000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+        });
+        
+        // Limpiar el carrito
+        clearCart();
+    };
+
     return (
     <Container fluid className={`${styles.container}`}>
+        <div>
+            <Helmet>
+                <title>Mostaza - Carrito</title>
+                <meta name="description" content="Carrito de compras con tus productos elegidos." />
+            </Helmet>
+        </div>
         <div>
             <Button className={`${stylesHome.btnTextAlignJustify} rounded-5`} onClick={handleOpen} >
                 <TextAlignJustify size={20} strokeWidth={4}/>
@@ -74,7 +99,7 @@ function Cart() {
                         <span>{getCartTotal().toFixed(2)}</span>
                     </div>
                     <Card.Footer>
-                        <Button className={`${styles.button} w-100`} disabled={cartItems.length === 0} onClick={()=> clearCart()}>
+                        <Button className={`${styles.button} w-100`} disabled={cartItems.length === 0} onClick={handleConfirmPurchase}>
                             Confirmar Comprar
                         </Button>
                     </Card.Footer>

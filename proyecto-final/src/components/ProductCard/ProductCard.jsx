@@ -1,20 +1,45 @@
-import React, {useContext} from "react";
-import { Col, Container, Row, Card as BootstrapCard, Button, Card} from "react-bootstrap";
+import React from "react";
+import { Col, Container, Row, Card} from "react-bootstrap";
+import { toast } from 'react-toastify';
 import { useMenu } from "../../hooks/useMenu";
 import { useCart } from "../../hooks/useCart"
+import Pagination from "../Pagination/Pagination";
 import styles from "./ProductCard.module.css"
 
 function ProductCard(){
-  const { filteredMenu, loading, error } = useMenu();
+  const {
+    loading, 
+    error, 
+    currentPageItems, 
+    currentPage,
+    totalPages,
+    totalItems,
+    itemsPerPage,
+    goToPage,
+    nextPage,
+    prevPage 
+  } = useMenu();
+
   const { addToCart } = useCart();
 
   const handleAddToCart = (product) => {
     addToCart(product);
-    // Opcional: puedes agregar un toast o feedback aquí
+
+    // Mostrar notificación
+    toast.success(`¡${product.name} agregado al carrito! 🛒`, {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
+
     console.log('🛒 Producto agregado:', product.name);
   };
+  
 
-    if (loading) {
+  if (loading) {
     return (
       <Container fluid>
         <div className="text-center text-white py-4">Cargando productos...</div>
@@ -33,7 +58,7 @@ function ProductCard(){
   return(
     <Container fluid>
       <Row className="g-3">
-                {filteredMenu.length === 0 ? (
+        {currentPageItems.length === 0 ? (
           <Col xs={12}>
             <div className="text-center text-white py-5">
               <h5>No se encontraron productos</h5>
@@ -41,7 +66,7 @@ function ProductCard(){
             </div>
           </Col>
         ) : (
-        filteredMenu.map((product) => (
+        currentPageItems.map((product) => (
           <Col xs={12} sm={6} md={6} lg={4} xl={4} xxl={3} key={product.id}>
             <Card className={`${styles.card} h-100`} onClick={() => handleAddToCart(product)}>
               <Card.Img src={product.image} className="cursor-pointer"/>
@@ -64,6 +89,15 @@ function ProductCard(){
         ))
       )}
       </Row>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        totalItems={totalItems}
+        itemsPerPage={itemsPerPage}
+        onPageChange={goToPage}
+        onNext={nextPage}
+        onPrev={prevPage}
+      />
     </Container>
     );
 } 

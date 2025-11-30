@@ -1,0 +1,47 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    padding: 1rem;
+}
+
+.actualPage{
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.buttonGroup{
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.paginationButton,
+.button{
+    border: 1px solid rgb(227, 31, 43);
+    color: white;
+    min-width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.active {
+    background-color: rgb(227, 31, 43);
+    color: white;
+}
+
+.inactive {
+    background-color: transparent;
+    color: #e31f2c;
+}
+
+.paginationButton:hover:not(:disabled) {
+    background-color: rgb(227, 31, 43);
+    color: white;
+}

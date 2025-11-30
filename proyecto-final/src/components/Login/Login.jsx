@@ -3,26 +3,24 @@ import { Card, Container, Form, Button, Alert, Spinner } from "react-bootstrap";
 import { useLocation, useNavigate, NavLink } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { TextAlignJustify } from "lucide-react";
+import { Helmet } from 'react-helmet';
+import Sidebar from "../Sidebar/Sidebar.jsx";
 import styles from "./Login.module.css"
 import stylesHome from "../Homepage/Homepage.module.css";
 import Logo from "../../assets/logo-mostaza.png"
-import Sidebar from "../Sidebar/Sidebar.jsx";
 
 
 const Login = () => {
     const [searchTerm, setSearchTerm] = useState('');
-
     const [showOffcanvas, setShowOffcanvas] = useState(false);
-
     const handleOpen = () => setShowOffcanvas(true);
     const handleClose = () => setShowOffcanvas(false);
-
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [formErrors, setFormErrors] = useState({});
-    
     const { login, loading } = useAuth();
+
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -64,6 +62,14 @@ const Login = () => {
 
     return (
         <Container className={`${styles.container}`}>
+            <div>
+                <div>
+                    <Helmet>
+                        <title>Mostaza - Login</title>
+                        <meta name="description" content="Inicio de sesion para disfrutar de una mejor experiencia" />
+                    </Helmet>
+                </div>
+            </div>
             <div>
                 <Button className={`${stylesHome.btnTextAlignJustify} rounded-5`} onClick={handleOpen} >
                     <TextAlignJustify size={20} strokeWidth={4}/>
@@ -118,13 +124,9 @@ const Login = () => {
                             </Form.Control.Feedback>
                         </Form.Group>
 
-                        <Button 
-                            type="submit" 
-                            className={`${styles.button} w-100`} 
-                            disabled={loading}
-                        >
+                        <Button type="submit" className={`${styles.button} w-100`} disabled={loading}>
                             {loading ? (
-                                <>
+                                <div>
                                     <Spinner
                                         as="span"
                                         animation="border"
@@ -134,7 +136,7 @@ const Login = () => {
                                         className="me-2"
                                     />
                                     Iniciando sesión...
-                                </>
+                                </div>
                             ) : (
                                 'Iniciar Sesion'
                             )}

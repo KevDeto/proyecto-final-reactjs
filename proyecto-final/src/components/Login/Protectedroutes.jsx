@@ -12,11 +12,7 @@ const Protectedroutes = ({
     // Si no esta autenticado, te redirige al login guardando la ubicación actual
     if (!isAuthenticated) {
         return (
-            <Navigate 
-                to={redirectPath} 
-                replace 
-                state={{ from: location }}
-            />
+            <Navigate to={redirectPath} replace state={{ from: location }}/>
         );
     }
 

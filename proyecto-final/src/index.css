@@ -4,6 +4,22 @@
   box-sizing: border-box;
 }
 
+.Toastify__progress-bar {
+  background: rgb(227, 31, 44) !important;
+}
+
+.Toastify__progress-bar--bg {
+  background: rgb(227, 31, 44) !important;
+}
+
+.Toastify__toast-icon svg {
+  fill: rgb(227, 31, 44) !important;
+}
+
+.Toastify__toast {
+  padding-right: 24px !important;
+}
+
 /*:root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
