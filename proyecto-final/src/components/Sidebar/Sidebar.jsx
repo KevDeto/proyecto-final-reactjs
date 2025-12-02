@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Offcanvas, Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-import { X, Facebook, Twitter, Instagram, Youtube, Linkedin } from 'lucide-react';
+import { X, Facebook, Twitter, Instagram, Youtube, Linkedin, Settings } from 'lucide-react';
 import CartBadge from "../Cart/Cartbadge"
 
 import styles from "./Sidebar.module.css";
@@ -27,6 +27,10 @@ function Sidebar({ showOffcanvas, handleClose }){
                         </div>
                     </Nav.Link>
                     <Nav.Link as={NavLink} to="/sucursales">Sucursales</Nav.Link>
+                    <Nav.Link as={NavLink} to="/admin/products">
+                        <Settings size={20} className="me-2" />
+                            Administrar Productos
+                    </Nav.Link>
                     <Nav.Link as={NavLink} to="/contacto">Contacto</Nav.Link>
                 </Nav>
                 <Nav className={`${styles.nav2}`}>

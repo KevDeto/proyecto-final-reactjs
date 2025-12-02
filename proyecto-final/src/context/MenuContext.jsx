@@ -29,6 +29,77 @@ export function MenuProvider({children}){
         }
     };
 
+    // POST - Crear nuevo producto
+    const createProduct = async (productData) => {
+        try {
+            setError(null);
+            const newProduct = await apiClient.post(API_URL, productData);
+            
+            // Actualizar el estado local
+            setMenu(prev => [...prev, newProduct]);
+            setFilteredMenu(prev => [...prev, newProduct]);
+            
+            return newProduct;
+        } catch (err) {
+            setError(err.message);
+            console.error("Error creating product:", err);
+            throw err;
+        }
+    };
+
+    // PUT - Actualizar producto existente
+    const updateProduct = async (id, productData) => {
+        try {
+            setError(null);
+            const updatedProduct = await apiClient.put(`${API_URL}/${id}`, productData);
+            
+            // Actualizar el estado local
+            setMenu(prev => prev.map(item => 
+                item.id === id ? updatedProduct : item
+            ));
+            setFilteredMenu(prev => prev.map(item => 
+                item.id === id ? updatedProduct : item
+            ));
+            
+            return updatedProduct;
+        } catch (err) {
+            setError(err.message);
+            console.error("Error updating product:", err);
+            throw err;
+        }
+    };
+
+    // DELETE - Eliminar producto
+    const deleteProduct = async (id) => {
+        try {
+            setError(null);
+            await apiClient.delete(`${API_URL}/${id}`);
+            
+            // Actualizar el estado local
+            setMenu(prev => prev.filter(item => item.id !== id));
+            setFilteredMenu(prev => prev.filter(item => item.id !== id));
+            
+            return true;
+        } catch (err) {
+            setError(err.message);
+            console.error("Error deleting product:", err);
+            throw err;
+        }
+    };
+
+    // GET - Obtener un producto por ID
+    const getProductById = async (id) => {
+        try {
+            setError(null);
+            const product = await apiClient.get(`${API_URL}/${id}`);
+            return product;
+        } catch (err) {
+            setError(err.message);
+            console.error("Error fetching product:", err);
+            throw err;
+        }
+    };
+
     // Función para buscar productos
     const searchProducts = (term) => {
         setSearchTerm(term);
@@ -115,8 +186,14 @@ export function MenuProvider({children}){
         loading,
         error,
     
-        // Acciones
+        // Acciones CRUD
         fetchMenu,
+        createProduct,
+        updateProduct,
+        deleteProduct,
+        getProductById,
+
+        //otras acciones
         searchProducts,
         clearSearch,
         clearError,

@@ -51,7 +51,7 @@
     opacity: 1;
 }
 
-.plusIcon {
+.icon {
     font-size: 54px;
     color: white;
     font-weight: bold;
@@ -60,7 +60,7 @@
     transition: transform 0.3s ease;
 }
 
-.card:hover .plusIcon {
+.card:hover .icon {
     transform: scale(1);
 }
 
