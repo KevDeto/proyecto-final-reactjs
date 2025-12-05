@@ -11,7 +11,6 @@ import Logo from "../../assets/logo-mostaza.png"
 
 
 const Login = () => {    
-    const [searchTerm, setSearchTerm] = useState('');
     const [showOffcanvas, setShowOffcanvas] = useState(false);
     const handleOpen = () => setShowOffcanvas(true);
     const handleClose = () => setShowOffcanvas(false);
