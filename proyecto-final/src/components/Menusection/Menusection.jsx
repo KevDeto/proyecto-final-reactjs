@@ -1,16 +1,18 @@
 import React, { useState} from "react";
 import { Button } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { Search, TextAlignJustify } from "lucide-react";
 import { Helmet } from 'react-helmet';
 import { useMenu } from "../../hooks/useMenu.jsx";
 import Sidebar from "../Sidebar/Sidebar.jsx";
-import Logo from "../../assets/logo-mostaza.png"
 import ProductCard from "../ProductCard/ProductCard.jsx";
+import Logo from "../../assets/logo-mostaza.png"
 import styles from "./Menusection.module.css";
 import stylesHome from "../Homepage/Homepage.module.css";
 
 function Menusection() {
+    const location = useLocation();
+
     const { searchProducts, clearSearch, searchTerm } = useMenu();    
     const [showOffcanvas, setShowOffcanvas] = useState(false);
 
@@ -19,18 +21,18 @@ function Menusection() {
 
     const handleSearchChange = (e) => {
         const value = e.target.value;
-        searchProducts(value); // ← Llamar a la función del contexto
+        searchProducts(value);
     };
 
     const handleClearSearch = () => {
-        clearSearch(); // ← Limpiar la búsqueda
+        clearSearch();
     };
 
     return(
         <div className={`d-flex align-items-center ${styles.container}`}>
             <div>
                 <div>
-                    <Helmet>
+                    <Helmet key={location.pathname}>
                         <title>Mostaza - Menú</title>
                         <meta name="description" content="Todos nuestros productos disponibles" />
                     </Helmet>

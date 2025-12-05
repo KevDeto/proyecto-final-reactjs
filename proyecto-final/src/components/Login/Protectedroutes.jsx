@@ -9,7 +9,7 @@ const Protectedroutes = ({
 }) => {
     const location = useLocation();
 
-    // Si no esta autenticado, te redirige al login guardando la ubicación actual
+    // si no estas autenticado, te redirige al login guardando la ubicacion actual
     if (!isAuthenticated) {
         return (
             <Navigate to={redirectPath} replace state={{ from: location }}/>

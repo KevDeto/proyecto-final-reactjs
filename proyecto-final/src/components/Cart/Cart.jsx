@@ -1,6 +1,6 @@
 import React, { useState} from 'react';
 import { Container, Row, Col, Card, Button, CardText } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useCart } from '../../hooks/useCart';
 import { TextAlignJustify } from 'lucide-react';
 import { toast } from 'react-toastify';
@@ -11,6 +11,8 @@ import stylesHome from "../Homepage/Homepage.module.css";
 import Logo from "../../assets/logo-mostaza.png"
 
 function Cart() {
+    const location = useLocation();
+
     const { cartItems, removeFromCart, getCartTotal, getCartItemsCount, getCountSameItems, clearCart} = useCart();
         
     const [showOffcanvas, setShowOffcanvas] = useState(false);
@@ -21,7 +23,7 @@ function Cart() {
     const handleConfirmPurchase = () => {
         if (cartItems.length === 0) return;
         
-        // Mostrar notificación de éxito
+        // notificacion de compra exitosa
         toast.success(`🎉 ¡Compra realizada! Gracias por tu pedido`, {
             position: "top-right",
             autoClose: 4000,
@@ -31,14 +33,13 @@ function Cart() {
             draggable: true,
         });
         
-        // Limpiar el carrito
         clearCart();
     };
 
     return (
     <Container fluid className={`${styles.container}`}>
         <div>
-            <Helmet>
+            <Helmet key={location.pathname}>
                 <title>Mostaza - Carrito</title>
                 <meta name="description" content="Carrito de compras con tus productos elegidos." />
             </Helmet>

@@ -13,7 +13,7 @@ export function MenuProvider({children}){
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    // GET - Obtener todos los productos
+    // GET
     const fetchMenu = async () => {
         try {
             setLoading(true);
@@ -29,13 +29,13 @@ export function MenuProvider({children}){
         }
     };
 
-    // POST - Crear nuevo producto
+    // POST
     const createProduct = async (productData) => {
         try {
             setError(null);
             const newProduct = await apiClient.post(API_URL, productData);
             
-            // Actualizar el estado local
+            // con esto actualizo el estado local
             setMenu(prev => [...prev, newProduct]);
             setFilteredMenu(prev => [...prev, newProduct]);
             
@@ -47,13 +47,13 @@ export function MenuProvider({children}){
         }
     };
 
-    // PUT - Actualizar producto existente
+    // PUT
     const updateProduct = async (id, productData) => {
         try {
             setError(null);
             const updatedProduct = await apiClient.put(`${API_URL}/${id}`, productData);
             
-            // Actualizar el estado local
+            // con esto actualizo el estado local
             setMenu(prev => prev.map(item => 
                 item.id === id ? updatedProduct : item
             ));
@@ -69,13 +69,13 @@ export function MenuProvider({children}){
         }
     };
 
-    // DELETE - Eliminar producto
+    // DELETE
     const deleteProduct = async (id) => {
         try {
             setError(null);
             await apiClient.delete(`${API_URL}/${id}`);
             
-            // Actualizar el estado local
+            // con esto actualizo el estado local
             setMenu(prev => prev.filter(item => item.id !== id));
             setFilteredMenu(prev => prev.filter(item => item.id !== id));
             
@@ -87,7 +87,7 @@ export function MenuProvider({children}){
         }
     };
 
-    // GET - Obtener un producto por ID
+    // GET ID
     const getProductById = async (id) => {
         try {
             setError(null);
@@ -100,13 +100,13 @@ export function MenuProvider({children}){
         }
     };
 
-    // Función para buscar productos
+    // Para buscar productos con el search
     const searchProducts = (term) => {
         setSearchTerm(term);
         setCurrentPage(1);
 
         if (!term.trim()) {
-            setFilteredMenu(menu); // Si no hay término, mostrar todos
+            setFilteredMenu(menu); // si no existe term, muestro todos
             return;
         }
 
@@ -121,60 +121,58 @@ export function MenuProvider({children}){
 
     const changeItemsPerPage = (newItemsPerPage) => {
         setItemsPerPage(newItemsPerPage);
-        setCurrentPage(1); // Resetear a primera página
+        setCurrentPage(1); // reseteo a la primera pagina
     };
 
-    // Calcular productos para la página actual
+    // calculo productos para la pagina actual
     const getCurrentPageItems = () => {
         const startIndex = (currentPage - 1) * itemsPerPage;
         const endIndex = startIndex + itemsPerPage;
         return filteredMenu.slice(startIndex, endIndex);
     };
 
-    // Calcular total de páginas
+    // calculo el total de paginas
     const getTotalPages = () => {
         return Math.ceil(filteredMenu.length / itemsPerPage);
     };
 
-    // Cambiar página
+    // cambio de pagina
     const goToPage = (pageNumber) => {
         if (pageNumber >= 1 && pageNumber <= getTotalPages()) {
             setCurrentPage(pageNumber);
         }
     };
 
-    // Ir a página siguiente
+    // voy a la siguiente pagina
     const nextPage = () => {
         if (currentPage < getTotalPages()) {
             setCurrentPage(currentPage + 1);
         }
     };
 
-    // Ir a página anterior
+    // voy a la pagina anterior
     const prevPage = () => {
         if (currentPage > 1) {
             setCurrentPage(currentPage - 1);
         }
     };
 
-    // Limpiar búsqueda
+    // limpio la busqueda
     const clearSearch = () => {
         setSearchTerm('');
         setFilteredMenu(menu);
     };
 
-    // Limpiar errores
     const clearError = () => {
         setError(null);
     };
 
-    // Cargar menu al iniciar
     useEffect(() => {
         fetchMenu();
     }, []);
 
     const value = {
-        // Estado
+        // estados
         menu,
         filteredMenu,
         currentPageItems: getCurrentPageItems(),
@@ -186,14 +184,14 @@ export function MenuProvider({children}){
         loading,
         error,
     
-        // Acciones CRUD
+        // CRUD
         fetchMenu,
         createProduct,
         updateProduct,
         deleteProduct,
         getProductById,
 
-        //otras acciones
+        //paginacion y search
         searchProducts,
         clearSearch,
         clearError,

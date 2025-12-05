@@ -6,9 +6,9 @@ import Menusection from './components/Menusection/Menusection.jsx'
 import Homepage from './components/Homepage/Homepage.jsx'
 import Cart from './components/Cart/Cart.jsx'
 import Protectedroutes from './components/Login/Protectedroutes.jsx'
-import Login from './components/Login/Login.jsx'
 import Adminsection from "./components/Admin/Adminsection.jsx"
 import ProductForm from "./components/Admin/Productform.jsx"
+import Login from './components/Login/Login.jsx'
 import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
@@ -16,12 +16,12 @@ import './App.css'
 function App() {
       const { isAuthenticated } = useAuth();
 
-  return (
-      <Router>
+    return (
+    <Router>
         <Routes>
-          <Route path='/' element={<Homepage/>}/>
-          <Route path='/menu' element={<Menusection/>}/>
-          <Route 
+            <Route path='/' element={<Homepage/>}/>
+            <Route path='/menu' element={<Menusection/>}/>
+            <Route 
                 path="/carrito" 
                 element={
                     <Protectedroutes isAuthenticated={isAuthenticated}>
@@ -29,10 +29,8 @@ function App() {
                     </Protectedroutes>
                 } 
             />
-          <Route path="/login" element={<Login />} />
-
-                    {/* Rutas de administración */}
-          <Route 
+            <Route path="/login" element={<Login />} />
+            <Route 
                 path="/admin/products" 
                 element={
                     <Protectedroutes isAuthenticated={isAuthenticated}>
@@ -40,7 +38,7 @@ function App() {
                     </Protectedroutes>
                 } 
             />
-          <Route 
+            <Route 
                 path="/admin/product/:id" 
                 element={
                     <Protectedroutes isAuthenticated={isAuthenticated}>
@@ -48,7 +46,6 @@ function App() {
                     </Protectedroutes>
                 } 
             />
-
         </Routes>
         <ToastContainer
           position="top-right"
@@ -62,8 +59,8 @@ function App() {
           pauseOnHover
           theme="dark"
         />
-      </Router>
-  )
+    </Router>
+    )
 }
 
 export default App

@@ -18,7 +18,7 @@ function Sidebar({ showOffcanvas, handleClose }){
             </Offcanvas.Header>
             <Offcanvas.Body className={`${styles.offcanvasBody}`}>
                 <Nav className={`${styles.nav1} flex-column w-100 fw-bold`}>
-                    <Nav.Link as={NavLink} to="/iniciar-sesion">Iniciar Sesión</Nav.Link>
+                    <Nav.Link as={NavLink} to="/">Inicio</Nav.Link>
                     <Nav.Link as={NavLink} to="/menu">Menú</Nav.Link>
                     <Nav.Link as={NavLink} to="/carrito">
                         <div className="d-flex justify-content-between">
@@ -26,12 +26,7 @@ function Sidebar({ showOffcanvas, handleClose }){
                             <CartBadge/>
                         </div>
                     </Nav.Link>
-                    <Nav.Link as={NavLink} to="/sucursales">Sucursales</Nav.Link>
-                    <Nav.Link as={NavLink} to="/admin/products">
-                        <Settings size={20} className="me-2" />
-                            Administrar Productos
-                    </Nav.Link>
-                    <Nav.Link as={NavLink} to="/contacto">Contacto</Nav.Link>
+                    <Nav.Link as={NavLink} to="/admin/products">Administrar</Nav.Link>
                 </Nav>
                 <Nav className={`${styles.nav2}`}>
                     <Nav.Link as="a" href="https://www.facebook.com/MostazaOk" target="_blank"><Facebook size={25}/></Nav.Link>

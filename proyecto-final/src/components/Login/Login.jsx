@@ -10,7 +10,7 @@ import stylesHome from "../Homepage/Homepage.module.css";
 import Logo from "../../assets/logo-mostaza.png"
 
 
-const Login = () => {
+const Login = () => {    
     const [searchTerm, setSearchTerm] = useState('');
     const [showOffcanvas, setShowOffcanvas] = useState(false);
     const handleOpen = () => setShowOffcanvas(true);
@@ -63,12 +63,10 @@ const Login = () => {
     return (
         <Container className={`${styles.container}`}>
             <div>
-                <div>
-                    <Helmet>
-                        <title>Mostaza - Login</title>
-                        <meta name="description" content="Inicio de sesion para disfrutar de una mejor experiencia" />
-                    </Helmet>
-                </div>
+                <Helmet key={from.pathname}>
+                    <title>Mostaza - Login</title>
+                    <meta name="description" content="Inicio de sesion para disfrutar de una mejor experiencia" />
+                </Helmet>
             </div>
             <div>
                 <Button className={`${stylesHome.btnTextAlignJustify} rounded-5`} onClick={handleOpen} >

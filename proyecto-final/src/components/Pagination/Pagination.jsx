@@ -13,7 +13,7 @@ const Pagination = ({
     itemsPerPage 
 }) => {
 
-    // Generar números de página a mostrar
+    // genero los numeros de las paginas
     const getPageNumbers = () => {
         const pages = [];
         const maxVisiblePages = 5;
@@ -34,7 +34,6 @@ const Pagination = ({
         return pages;
     };
 
-    // Si no hay páginas o solo hay una página, no mostrar la paginación
     if (totalPages <= 1) return null;
 
     return (

@@ -26,7 +26,7 @@ function ProductCard(){
   const handleAddToCart = (product) => {
     addToCart(product);
 
-    // Mostrar notificación
+    // muesto las notificaciones al comprar
     toast.success(`¡${product.name} agregado al carrito! 🛒`, {
       position: "top-right",
       autoClose: 3000,
@@ -82,7 +82,7 @@ function ProductCard(){
                   {product.description}
                 </Card.Text>
                 <Card.Footer className={`${styles.cardFooter}`}>
-                  {product.price}
+                  ${product.price}
                 </Card.Footer>
               </Card.Body>
             </Card>

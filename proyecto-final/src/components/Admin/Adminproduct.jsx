@@ -68,7 +68,7 @@ function Adminproduct(){
                   {product.description}
                 </Card.Text>
                 <Card.Footer className={`${styles.cardFooter}`}>
-                  {product.price}
+                  ${product.price}
                 </Card.Footer>
               </Card.Body>
             </Card>

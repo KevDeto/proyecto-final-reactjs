@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container, Button } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { Hamburger, TextAlignJustify } from 'lucide-react';
 import { Helmet } from 'react-helmet';
 import Sidebar from "../Sidebar/Sidebar.jsx"
@@ -8,6 +8,8 @@ import Logo from "../../assets/Logo-mostaza.png";
 import styles from "./Homepage.module.css";
 
 function Homepage(){
+    const location = useLocation();
+
     const [showOffcanvas, setShowOffcanvas] = useState(false);
 
     const handleOpen = () => setShowOffcanvas(true);
@@ -16,7 +18,7 @@ function Homepage(){
     return(
         <div className={`d-flex align-items-center ${styles.container}`}>
             <div>
-                <Helmet>
+                <Helmet key={location.pathname}>
                     <title>Mostaza</title>
                     <meta name="description" content="Mostaza, cada vez más grandes. Cuenta con más de 140 sucursales en todo el país y 20 años de trayectoria." />
                 </Helmet>

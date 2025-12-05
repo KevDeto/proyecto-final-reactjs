@@ -40,7 +40,7 @@ export function AuthProvider({ children }) {
         localStorage.removeItem('authToken');
     }, []);
 
-    // Funcion para verificar sesion existente (util al recargar la pagina)
+    // verifico si hay una sesion activa al cargar la pagina
     const checkAuth = useCallback(() => {
         // verifico si existe algun token en localStorage
         const token = localStorage.getItem('authToken');
