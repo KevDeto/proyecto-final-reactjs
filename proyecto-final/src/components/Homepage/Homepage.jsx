@@ -4,7 +4,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import { Hamburger, TextAlignJustify } from 'lucide-react';
 import { Helmet } from 'react-helmet';
 import Sidebar from "../Sidebar/Sidebar.jsx"
-import Logo from "../../assets/Logo-mostaza.png";
+import Logo from "../../assets/logo-mostaza.png"
 import styles from "./Homepage.module.css";
 
 function Homepage(){
