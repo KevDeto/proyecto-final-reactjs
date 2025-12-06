@@ -35,7 +35,7 @@ Para usuarios logueados:
 
 Clona el repositorio:
 ```
-git clone https://github.com/KevDeto/ecohouse-shop.git
+git clone https://github.com/KevDeto/proyecto-final-reactjs.git
 ```
 Accede al proyecto:
 ```
