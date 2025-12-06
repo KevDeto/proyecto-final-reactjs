@@ -71,7 +71,10 @@ function Cart() {
                                 </Col>
                                 <Col xs={4} md={5} className={`${styles.dataColumn} flex-column align-items-start`}>
                                     <h6 className='text-truncate w-100'>{item.name}</h6>
-                                    <Button variant='link text-white text-decoration-none p-0' onClick={() => removeFromCart(item.id)}>
+                                    <Button 
+                                        variant='link text-white text-decoration-none p-0' 
+                                        onClick={() => removeFromCart(item.id)}
+                                        aria-label={`Eliminar ${item.name} del carrito`}>
                                         Eliminar
                                     </Button>
                                 </Col>
@@ -100,7 +103,11 @@ function Cart() {
                         <span>{getCartTotal().toFixed(2)}</span>
                     </div>
                     <Card.Footer>
-                        <Button className={`${styles.button} w-100`} disabled={cartItems.length === 0} onClick={handleConfirmPurchase}>
+                        <Button 
+                            className={`${styles.button} w-100`}
+                            disabled={cartItems.length === 0}
+                            onClick={handleConfirmPurchase}
+                            aria-label='Completar y pagar pedido'>
                             Confirmar Comprar
                         </Button>
                     </Card.Footer>

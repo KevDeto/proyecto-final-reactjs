@@ -43,7 +43,8 @@ const Pagination = ({
             </div>
             
             <ButtonGroup className={`${styles.buttonGroup}`}>
-                <Button variant="outline-danger" onClick={onPrev} disabled={currentPage === 1} className={`${styles.button}`}>
+                <Button variant="outline-danger" onClick={onPrev} disabled={currentPage === 1} className={`${styles.button}`}
+                    aria-label="Dirigirse a la pagina anterior">
                     <ChevronLeft size={16} />
                 </Button>
 
@@ -54,12 +55,15 @@ const Pagination = ({
                         onClick={() => typeof page === 'number' && onPageChange(page)}
                         disabled={page === '...'}
                         className={`${styles.paginationButton} ${page === currentPage ? styles.active : styles.inactive}`}
+                        aria-label={page === currentPage ? `Página actual, página ${page}` : `Ir a la página ${page}`}
                         >
                         {page}
                     </Button>
                 ))}
 
-                <Button variant="outline-danger" onClick={onNext} disabled={currentPage === totalPages} className={`${styles.button}`}>
+                <Button variant="outline-danger" onClick={onNext} disabled={currentPage === totalPages} 
+                    className={`${styles.button}`}
+                    aria-label="Dirigirse a la pagina siguiente">
                     <ChevronRight size={16} />
                 </Button>
             </ButtonGroup>

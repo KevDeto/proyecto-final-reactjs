@@ -69,7 +69,8 @@ function ProductCard(){
         ) : (
         currentPageItems.map((product) => (
           <Col xs={12} sm={6} md={6} lg={4} xl={4} xxl={3} key={product.id}>
-            <Card className={`${styles.card} h-100`} onClick={() => handleAddToCart(product)}>
+            <Card className={`${styles.card} h-100`} onClick={() => handleAddToCart(product)} 
+              aria-label="Agregar un producto al carrito de compras">
               <Card.Img src={product.image} className="cursor-pointer"/>
               <div className={`${styles.cardOverlay}`}>
                 <Plus size={30} strokeWidth={4} color="white"/>

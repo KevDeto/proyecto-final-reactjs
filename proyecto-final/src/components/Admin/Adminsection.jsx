@@ -53,12 +53,14 @@ function Menusection() {
                     placeholder="Buscar hamburguesas, helados, ensaladas..." 
                     value={searchTerm}
                     onChange={handleSearchChange}
+                    aria-label="Buscar productos"
                 />
             </div>
             <Button 
                 variant="success" 
                 className="ms-3"
                 onClick={handleCreateNew}
+                aria-label="Crear nuevo producto"
                 >
                 <Plus size={20} className="me-2" />
                 Nuevo Producto

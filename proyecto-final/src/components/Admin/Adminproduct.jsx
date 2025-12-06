@@ -55,7 +55,8 @@ function Adminproduct(){
         ) : (
         currentPageItems.map((product) => (
           <Col xs={12} sm={6} md={6} lg={4} xl={4} xxl={3} key={product.id}>
-            <Card className={`${styles.card} h-100`} onClick={() => handleEditClick(product.id)}>
+            <Card className={`${styles.card} h-100`} onClick={() => handleEditClick(product.id)} 
+              aria-label="Seleccionar producto para su edicion">
               <Card.Img src={product.image} className="cursor-pointer"/>
               <div className={`${styles.cardOverlay}`}>
                 <SquarePen size={30} strokeWidth={3} color="white"/>

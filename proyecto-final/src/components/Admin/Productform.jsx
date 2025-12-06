@@ -277,6 +277,7 @@ const ProductForm = () => {
                                         type="submit" 
                                         disabled={loading}
                                         className={`${styles.formButton} ${styles.saveButton}`}
+                                        aria-label={isEditMode ? "Actualizar producto" : "Crear nuevo producto"}
                                     >
                                         <Save size={18} className="me-2" />
                                         {loading ? 'Guardando...' : isEditMode ? 'Actualizar Producto' : 'Crear Producto'}
@@ -288,6 +289,7 @@ const ProductForm = () => {
                                             onClick={handleDelete}
                                             disabled={loading}
                                             className={`${styles.formButton} ${styles.deleteButton}`}
+                                            aria-label="Eliminar producto"
                                         >
                                             <Trash2 size={18} className="me-2" />
                                             Eliminar Producto
@@ -298,6 +300,7 @@ const ProductForm = () => {
                                         variant="secondary" 
                                         onClick={handleCancel}
                                         className={`${styles.formButton} ${styles.cancelButton}`}
+                                        aria-label="Cancelar y volver al listado de productos"
                                     >
                                         Cancelar
                                     </Button>

@@ -121,7 +121,8 @@ const Login = () => {
                             </Form.Control.Feedback>
                         </Form.Group>
 
-                        <Button type="submit" className={`${styles.button} w-100`} disabled={loading}>
+                        <Button type="submit" className={`${styles.button} w-100`} disabled={loading} 
+                            aria-label="Enviar credenciales de login">
                             {loading ? (
                                 <div>
                                     <Spinner

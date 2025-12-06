@@ -31,12 +31,10 @@ function Menusection() {
     return(
         <div className={`d-flex align-items-center ${styles.container}`}>
             <div>
-                <div>
-                    <Helmet key={location.pathname}>
-                        <title>Mostaza - Menú</title>
-                        <meta name="description" content="Todos nuestros productos disponibles" />
-                    </Helmet>
-                </div>
+                <Helmet key={location.pathname}>
+                    <title>Mostaza - Menú</title>
+                    <meta name="description" content="Todos nuestros productos disponibles" />
+                </Helmet>
             </div>
             <Button className={`${stylesHome.btnTextAlignJustify} rounded-5`} onClick={handleOpen} >
                 <TextAlignJustify size={20} strokeWidth={4}/>
@@ -48,6 +46,7 @@ function Menusection() {
                     placeholder="Buscar hamburguesas, helados, ensaladas..." 
                     value={searchTerm}
                     onChange={handleSearchChange}
+                    aria-label="Buscar productos"
                 />
             </div>
             <NavLink to="/">

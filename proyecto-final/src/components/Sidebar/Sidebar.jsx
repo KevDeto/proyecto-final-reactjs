@@ -12,7 +12,7 @@ function Sidebar({ showOffcanvas, handleClose }){
         <Offcanvas placement="start" show={showOffcanvas} onHide={handleClose} className={`${styles.offcanvas}`}>
             <Offcanvas.Header className={`${styles.offcanvasHeader} mt-4`}>
                 <Offcanvas.Title className={`lh-1 fs-2 ms-1`}>Mostaza</Offcanvas.Title>
-                <Button onClick={handleClose} className={`${styles.btnClose}`}>
+                <Button onClick={handleClose} className={`${styles.btnClose}`} aria-label="Cerrar menú lateral">
                     <X size={18} strokeWidth={3}/>
                 </Button>
             </Offcanvas.Header>
