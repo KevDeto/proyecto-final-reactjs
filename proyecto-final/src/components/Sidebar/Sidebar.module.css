@@ -1,6 +1,7 @@
 .offcanvas{
     background-color: rgb(188, 33, 48) !important;
     color: white !important;
+    z-index: 10 !important;
 }
 
 .offcanvasHeader{
