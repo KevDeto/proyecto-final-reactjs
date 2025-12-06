@@ -1,4 +1,4 @@
-## Proyecto de fin de curso:
+## Proyecto de fin de curso
 
 Este proyecto con funcionalidades e-commerce incluye:
 + Gestión del Carrito y Autenticación de Usuarios.
